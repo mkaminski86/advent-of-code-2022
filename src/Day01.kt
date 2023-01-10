@@ -1,17 +1,28 @@
 fun main() {
-    fun part1(input: List<String>): Int {
-        return input.size
+  fun part1(input: List<String>): Int {
+    return parseInput(input).first()
+  }
+
+  fun part2(input: List<String>): Int {
+    return parseInput(input).take(3).sum()
+  }
+
+  val input = readInput("Day01")
+  part1(input).println()
+  part2(input).println()
+}
+
+private fun parseInput(input: List<String>): List<Int> {
+  var totalCals = 0
+  val totalCounts = mutableListOf<Int>()
+  input.forEach {
+    if (it.isEmpty()) {
+      totalCounts.add(totalCals)
+      totalCals = 0
+    } else {
+      totalCals += it.toInt()
     }
-
-    fun part2(input: List<String>): Int {
-        return input.size
-    }
-
-    // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
-
-    val input = readInput("Day01")
-    part1(input).println()
-    part2(input).println()
+  }
+  totalCounts.sortDescending()
+  return totalCounts
 }
