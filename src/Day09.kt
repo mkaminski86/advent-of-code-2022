@@ -1,15 +1,13 @@
 import kotlin.math.absoluteValue
 import kotlin.math.sign
 
-data class Point(val x: Int = 0, val y: Int = 0) {
-  fun stepTowards(other: Point) = Point((other.x - x).sign + x, (other.y - y).sign + y)
-}
+private fun Point2d.stepTowards(other: Point2d) = Point2d((other.x - x).sign + x, (other.y - y).sign + y)
 
-private fun pointsTouching(p1: Point, p2: Point) = (p1.x - p2.x).absoluteValue <= 1 && (p1.y - p2.y).absoluteValue <= 1
+private fun pointsTouching(p1: Point2d, p2: Point2d) = (p1.x - p2.x).absoluteValue <= 1 && (p1.y - p2.y).absoluteValue <= 1
 
 private fun follow(input: List<String>, numberOfKnots: Int): Int {
-  val rope = Array(numberOfKnots) { Point() }
-  val tailVisits = mutableSetOf<Point>()
+  val rope = Array(numberOfKnots) { Point2d() }
+  val tailVisits = mutableSetOf<Point2d>()
 
   val headPath = input.joinToString {
     val direction = it.substringBefore(" ")
