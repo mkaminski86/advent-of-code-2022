@@ -6,6 +6,10 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    implementation("com.github.shiguruikai:combinatoricskt:1.6.0")
+}
+
 tasks {
     sourceSets {
         main {
