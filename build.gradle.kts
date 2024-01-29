@@ -1,23 +1,24 @@
 plugins {
-    kotlin("jvm") version "1.8.0"
+  kotlin("jvm") version "1.8.0"
 }
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 dependencies {
-    implementation("com.github.shiguruikai:combinatoricskt:1.6.0")
+  implementation("com.github.shiguruikai:combinatoricskt:1.6.0")
+  implementation(kotlin("script-runtime"))
 }
 
 tasks {
-    sourceSets {
-        main {
-            java.srcDirs("src")
-        }
+  sourceSets {
+    main {
+      java.srcDirs("src")
     }
+  }
 
-    wrapper {
-        gradleVersion = "7.6"
-    }
+  wrapper {
+    gradleVersion = "7.6"
+  }
 }
