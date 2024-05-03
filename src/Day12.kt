@@ -1,13 +1,6 @@
 import java.lang.IllegalStateException
 import java.util.*
 
-  private fun Point2d.getNonDiagonalNeighbours() = setOf<Point2d>(
-    copy(x = x - 1),
-    copy(x = x + 1),
-    copy(y = y - 1),
-    copy(y = y + 1)
-  )
-
 class Path(val lastPoint: Point2d, val costUpToHere: Int = 0) : Comparable<Path> {
   override fun compareTo(other: Path) = this.costUpToHere.compareTo(other.costUpToHere)
 }
